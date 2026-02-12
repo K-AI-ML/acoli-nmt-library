@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "acoli-nmt"
+version = "0.6.0"
+description = "Acoli ↔ English neural machine translation: train, evaluate, and serve NLLB-200 and Tower-7B models"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [{name = "Acoli NMT Contributors"}]
+keywords = ["nmt", "acholi", "acoli", "nllb", "translation", "low-resource"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "torch>=2.1",
+    "transformers>=4.38",
+    "sentencepiece",
+    "protobuf",
+    "datasets",
+    "accelerate",
+    "evaluate",
+    "sacrebleu",
+    "peft>=0.7",
+    "bitsandbytes",
+    "tqdm",
+    "pandas",
+]
+
+[project.optional-dependencies]
+comet = ["unbabel-comet"]
+ui = ["gradio>=4.0"]
+all = ["unbabel-comet", "gradio>=4.0"]
+dev = ["pytest", "ruff", "black"]
+
+[project.scripts]
+acoli-train = "acoli_nmt.cli:train_cli"
+acoli-eval = "acoli_nmt.cli:eval_cli"
+acoli-translate = "acoli_nmt.cli:translate_cli"
+acoli-serve = "acoli_nmt.cli:serve_cli"
+
+[project.urls]
+Homepage = "https://github.com/your-username/acoli-nmt"
+
+[tool.setuptools.packages.find]
+include = ["acoli_nmt*"]

@@ -1,0 +1,24 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+# Python egg-info
+*.egg-info/
+
+# Virtual environment folders
+venv/
+.env/
+
+# Checkpoints and large model files
+acoli-en-nllb-ft/checkpoint-*/
+
+# Logs
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore editor files
+*.swp
+*.swo

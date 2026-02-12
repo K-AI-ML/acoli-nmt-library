@@ -1,0 +1,39 @@
+# Acoli NMT — example configuration
+# Copy and edit, then pass to scripts or load with:
+#   import yaml; cfg = Config(**yaml.safe_load(open("config.yaml")))
+
+model_path: nllb
+nllb_model: facebook/nllb-200-distilled-600M
+src_lang: eng_Latn
+tgt_lang: ach_Latn
+related_lang: luo_Latn
+
+# Data
+load_mt560: true
+load_uglex2: true
+load_uglex1: true
+load_salt_hf: true
+load_salt_gh: true
+load_ugalang: true
+
+# Augmentation (enable after first run)
+do_backtranslation: false
+bt_num_samples: 5000
+bt_roundtrip_threshold: 0.65
+
+# Training
+max_len: 256
+use_lora: true
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+batch_size: 16
+grad_accum: 4
+epochs: 5
+lr: 0.0001
+warmup: 0.10
+nllb_bidirectional: true
+seed: 42
+
+output_dir: ./acoli-en-nllb-ft
+save_dir: ./acoli-en-nllb-final
